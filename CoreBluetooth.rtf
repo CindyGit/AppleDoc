@@ -1,0 +1,950 @@
+{\rtf1\ansi\ansicpg950\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset136 STHeitiTC-Light;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww37900\viewh18140\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 ==
+\f1 \'c2\'c5\'a4\'fa
+\f0 ==\
+===BLE(CoreBluetooth)===\
+Bluetooth 4.0
+\f1 \'a4\'a7\'ab\'e1\'b4\'4e\'b1\'4e\'b3\'71\'b0\'54\'bc\'d2\'a6\'a1\'a4\'c0\'ac\'b0\'b0\'aa\'b3\'74\'a4\'ce\'a7\'43\'b3\'74\'ba\'d8\'c3\'fe\'a1\'41\'a5\'d8\'ab\'65\'b1\'4e\'a7\'43\'b3\'74\'a7\'43\'af\'d3\'af\'e0\'c2\'b2\'ba\'d9\'ac\'b0
+\f0 [http://en.wikipedia.org/wiki/Bluetooth_low_energy BLE]
+\f1 \'a1\'41\'a5\'69\'a5\'48\'b3\'73\'b1\'b5\'a4\'40\'a8\'c7\'b6\'71\'b4\'fa\'ab\'ac\'aa\'ba\'b7\'50\'b4\'fa\'be\'b9\'c3\'fe\'ab\'ac\'b9\'b3\'a1\'47\'a4\'df\'b8\'f5\'ad\'70\'a1\'42\'a6\'e5\'c0\'a3
+\f0 \'85
+\f1 \'b5\'a5\'a1\'41\'b3\'6f\'a8\'cf\'b1\'6f
+\f0 iDevice
+\f1 \'a4\'a3\'a6\'41\'ac\'4f\'a7\'51\'a5\'ce
+\f0 MFi
+\f1 \'bb\'7b\'c3\'d2\'b9\'4c\'aa\'ba
+\f0 Dock
+\f1 \'a4\'7e\'af\'e0\'bb\'50
+\f0 iDevice
+\f1 \'b3\'73\'b1\'b5\'a1\'41\'bc\'57\'a5\'5b
+\f0 APP
+\f1 \'ab\'ac\'ba\'41\'aa\'ba\'a6\'68\'a4\'b8\'a1\'43
+\f0 \
+\
+
+\f1 \'a6\'70\'aa\'47\'b7\'51\'ad\'6e\'b8\'f2
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'b3\'73\'b1\'b5\'a1\'41
+\f0 iOS
+\f1 \'b4\'a3\'a8\'d1\'a4\'46
+\f0 CoreBluetooth framework
+\f1 \'a8\'d3\'bb\'50\'b6\'67\'c3\'e4\'b3\'73\'b1\'b5\'a1\'41\'be\'e3\'ad\'d3\'b5\'7b\'a6\'a1\'a4\'a4\'a4\'c0\'ac\'b0
+\f0 Discover
+\f1 \'a1\'42
+\f0 Connect
+\f1 \'a1\'42
+\f0 Explore
+\f1 \'a1\'42
+\f0 Interact
+\f1 \'a1\'41\'a4\'55\'ad\'b1\'b1\'4e\'b7\'7c\'a5\'48\'b1\'71\'b3\'73\'bd\'75\'a6\'dc
+\f0 BLE
+\f1 \'c5\'aa\'a8\'fa\'a8\'ec\'b8\'ea\'ae\'c6\'ac\'b0\'ad\'ec\'ab\'68\'a8\'d3\'a4\'b6\'b2\'d0\'a1\'43
+\f0 \
+\
+====Discover/Connect====\
+[[File:BLE FLOW1.png]]\
+\
+
+\f1 \'a8\'cc\'b7\'d3\'bd\'62\'c0\'59\'a4\'e8\'a6\'56\'a5\'d1\'a4\'57\'a6\'d3\'a4\'55\'ac\'b0\'b6\'b6\'a7\'c7\'a8\'d3\'a8\'cc\'a7\'c7\'a7\'b9\'a6\'a8
+\f0 Discover
+\f1 \'bb\'50
+\f0 Connect
+\f1 \'ac\'79\'b5\'7b\'a1\'41\'a4\'55\'ad\'b1\'b7\'7c\'b0\'77\'b9\'ef\'a6\'b9\'ac\'79\'b5\'7b\'a5\'5b\'a4\'57\'bd\'64\'a8\'d2\'a8\'d3\'a4\'b6\'b2\'d0
+\f0 \
+=====CBCentralManager=====\
+
+\f1 \'ad\'6e\'a8\'cf\'a5\'ce
+\f0 CoreBluetooth
+\f1 \'b4\'4e\'ad\'6e\'a5\'fd\'a4\'46\'b8\'d1\'a4\'40\'a4\'55
+\f0 CBCentralManager
+\f1 \'a1\'41\'b3\'6f\'ad\'d3
+\f0 Object
+\f1 \'b4\'78\'b1\'b1\'be\'e3\'ad\'d3
+\f0 BLE
+\f1 \'aa\'ba\'ba\'de\'b2\'7a\'a1\'41\'a4\'40\'b6\'7d\'a9\'6c\'ad\'6e\'a5\'fd\'b9\'ef
+\f0 CBCentralManager
+\f1 \'a8\'d3\'b0\'b5\'ad\'d3\'aa\'ec\'a9\'6c\'a4\'c6
+\f0 \
+<pre>\
+CBCentralManager *CM = [[CBCentralManager alloc] initWithDelegate:self queue:nil];\
+</pre>\
+=====centralManagerDidUpdateState=====\
+
+\f1 \'a6\'62\'aa\'ec\'a9\'6c\'a4\'c6\'ae\'c9\'ab\'fc\'a9\'77
+\f0 Delegate
+\f1 \'ac\'b0
+\f0 self
+\f1 \'a1\'41\'a8\'c3\'a6\'62
+\f0 .h
+\f1 \'a4\'ba\'a5\'5b\'a4\'57
+\f0 Delegate
+\f1 \'ab\'c5\'a7\'69\'a1\'47
+\f0 \
+<pre>\
+@interface TestCoreBluetooth : NSObject<CBCentralManagerDelegate> \{\
+:\
+:\
+:\
+\}\
+</pre>\
+\
+
+\f1 \'a5\'5b\'a7\'b9\'ab\'c5\'a7\'69\'ab\'e1\'b4\'4e\'bb\'dd\'ad\'6e\'a7\'b9\'a6\'a8
+\f0 centralManagerDidUpdateState
+\f1 \'b3\'6f\'ad\'d3
+\f0 Delegate
+\f1 \'a1\'41
+\f0 \
+\
+<pre>\
+-(void)centralManagerDidUpdateState:(CBCentralManager*)cManager\
+\{\
+    NSMutableString* nsmstring=[NSMutableString stringWithString:@"UpdateState:"];\
+    BOOL isWork=FALSE;\
+    switch (cManager.state) \{\
+        case CBCentralManagerStateUnknown:\
+            [nsmstring appendString:@"Unknown\\n"];\
+            break;\
+        case CBCentralManagerStateUnsupported:\
+            [nsmstring appendString:@"Unsupported\\n"];            \
+            break;\
+        case CBCentralManagerStateUnauthorized:\
+            [nsmstring appendString:@"Unauthorized\\n"];\
+            break;\
+        case CBCentralManagerStateResetting:\
+            [nsmstring appendString:@"Resetting\\n"];\
+            break;\
+        case CBCentralManagerStatePoweredOff:\
+            [nsmstring appendString:@"PoweredOff\\n"];\
+            if (connectedPeripheral!=NULL)\{\
+                [CM cancelPeripheralConnection:connectedPeripheral];\
+            \}\
+            break;\
+        case CBCentralManagerStatePoweredOn:\
+            [nsmstring appendString:@"PoweredOn\\n"];\
+            isWork=TRUE;\
+            break;\
+        default:\
+            [nsmstring appendString:@"none\\n"]; \
+            break;\
+    \}\
+    NSLog(@"%@",nsmstring);\
+    [delegate didUpdateState:isWork message:nsmstring getStatus:cManager.state];\
+\}\
+</pre>\
+
+\f1 \'a8\'cc\'b7\'d3
+\f0 centralManagerDidUpdateState
+\f1 \'a8\'d3\'b5\'b2\'aa\'47\'a8\'d3\'a7\'50\'c2\'5f
+\f0 iDevice
+\f1 \'ac\'4f\'a7\'5f\'a4\'e4\'b4\'a9
+\f0 BLE
+\f1 \'a1\'41\'b2\'a6\'b3\'ba
+\f0 BLE
+\f1 \'ac\'4f\'a6\'62
+\f0 iphone 4s
+\f1 \'a1\'42
+\f0 New iPad
+\f1 \'a4\'a7\'ab\'e1\'a4\'7e\'a6\'b3\'aa\'ba\'a1\'41\'a5\'69\'a5\'48\'ae\'da\'be\'da\'a6\'b9\'b6\'b5\'a8\'d3\'a8\'4d\'a9\'77
+\f0 APP
+\f1 \'aa\'ba\'a5\'5c\'af\'e0\'a9\'ce\'a8\'e4\'a5\'4c\'b4\'a3\'a5\'dc\'a8\'cf\'a5\'ce\'aa\'cc\'aa\'ba\'b0\'ca\'a7\'40\'a1\'43
+\f0 \
+\
+=====scanForPeripheralsWithServices=====\
+
+\f1 \'bd\'54\'a9\'77\'a9\'50\'c3\'e4\'a4\'e4\'b4\'a9
+\f0 BLE
+\f1 \'a5\'42\'b9\'42\'a7\'40\'a5\'bf\'b1\'60\'ab\'e1\'a1\'41\'a7\'da\'ad\'cc\'b4\'4e\'ad\'6e\'a8\'d3\'b6\'7d\'b1\'d2
+\f0 BLE
+\f1 \'b7\'6a\'b4\'4d\'a5\'5c\'af\'e0\'a8\'d3\'b4\'4d\'a7\'e4
+\f0 BLE
+\f1 \'aa\'ba\'b6\'67\'c3\'e4\'a1\'41\'b7\'ed\'b6\'67\'c3\'e4\'b1\'b5\'a6\'ac\'a8\'ec\'b7\'6a\'b4\'4d\'a5\'5c\'af\'e0\'aa\'ba\'bc\'73\'bc\'bd\'ae\'c9\'b4\'4e\'b7\'7c\'a6\'62\'a4\'40\'a9\'77\'ae\'c9\'b6\'a1\'a4\'ba\'a6\'5e\'c2\'d0\'a1\'41\'a6\'62\'a6\'b9\'a7\'da\'ad\'cc\'a5\'69\'a5\'48\'b3\'5d\'a9\'77\'a4\'40\'ad\'d3
+\f0 2
+\f1 \'ac\'ed\'aa\'ba
+\f0 Timer
+\f1 \'a8\'d3\'b0\'b1\'a4\'ee
+\f0 scan\
+<pre>\
+CBCentralManager *CM = [[CBCentralManager alloc] initWithDelegate:self queue:nil];\
+[CM scanForPeripheralsWithServices:nil options:options];\
+[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(scanTimeout:) userInfo:nil repeats:NO];\
+</pre>\
+
+\f1 \'b3\'5d\'a9\'77
+\f0 2
+\f1 \'ac\'ed\'ab\'e1\'c4\'b2\'b5\'6f\'b0\'f5\'a6\'e6
+\f0 scanTimeout method
+\f1 \'a1\'41\'a6\'41\'b1\'4e
+\f0 scanForPeripheralsWithServices
+\f1 \'aa\'ba\'ad\'c8\'b3\'5d\'ac\'b0
+\f0 nil
+\f1 \'a1\'41\'a5\'4e\'aa\'ed\'b7\'6a\'b4\'4d\'aa\'ba
+\f0 Service type
+\f1 \'a4\'a3\'a8\'fc\'ad\'ad\'a8\'ee\'a1\'41\'b7\'ed\'a7\'41\'a5\'75\'ac\'4f\'ad\'6e\'b7\'6a\'b4\'4d\'af\'53\'a9\'77\'aa\'ba\'b9\'ef\'a6\'56\'ae\'c9\'a5\'69\'a5\'48\'b1\'4e\'a5\'a6\'aa\'ba
+\f0 UUID
+\f1 \'b6\'f1\'a4\'4a\'a1\'41\'b9\'b3\'a1\'47
+\f0 \
+<pre>\
+        NSArray	*uuidArray= [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"180D"], nil];\
+        [CM scanForPeripheralsWithServices:uuidArray options:options];\
+</pre>\
+
+\f1 \'a8\'e4\'a4\'a4\'a1\'75
+\f0 UUIDWithString:@"180D"
+\f1 \'a1\'76\'aa\'ba
+\f0 180D
+\f1 \'b4\'4e\'ac\'4f
+\f0 ''Heart Rate'' Service type
+\f1 \'a1\'41\'a6\'70\'aa\'47\'a6\'b3\'ab\'fc\'a9\'77
+\f0 Service type
+\f1 \'a1\'41\'ab\'68\'b5\'b2\'aa\'47\'b4\'4e\'b7\'7c\'b1\'4e\'b6\'67\'c3\'e4\'a6\'b3
+\f0 ''Heart Rate''
+\f1 \'a4\'40\'a4\'40\'a6\'43\'a5\'58\'a8\'d3\'a1\'41\'b7\'51\'ad\'6e\'aa\'be\'b9\'44\'b3\'6f\'c3\'fe\'aa\'ba
+\f0 Service Type
+\f1 \'a5\'69\'a5\'48\'a8\'ec
+\f0 [http://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx Bluetooth
+\f1 \'a9\'78\'ba\'f4
+\f0 ]
+\f1 \'ac\'64\'b8\'df\'a1\'43
+\f0 \
+\
+
+\f1 \'a4\'40\'a4\'ac\'a4\'46\'b8\'d1
+\f0 Service type
+\f1 \'ac\'4f\'ad\'fe\'a4\'40\'ba\'d8\'c3\'fe\'ab\'ac\'ae\'c9\'b4\'4e\'a5\'69\'a5\'48\'a8\'d3\'b0\'b5\'b9\'ef\'c0\'b3\'aa\'ba\'ac\'79\'b5\'7b\'a4\'ce\'b8\'ea\'ae\'c6\'aa\'ba\'b8\'d1\'aa\'52\'a1\'41\'a4\'5d\'a5\'69\'a5\'48\'bb\'73\'a7\'40\'a5\'58\'b2\'c5\'a6\'58\'bc\'d0\'b7\'c7\'b6\'67\'c3\'e4\'aa\'ba
+\f0 APP
+\f1 \'a1\'43
+\f0 \
+\
+=====didDiscoverPeripheral=====\
+didDiscoverPeripheral
+\f1 \'b3\'6f\'ac\'4f\'c4\'dd\'a9\'f3
+\f0 Delegate
+\f1 \'a1\'41\'a9\'d2\'a5\'48\'ad\'6e\'ab\'f6\'b7\'d3\'a5\'a6\'b9\'77\'b3\'5d\'aa\'ba\'ab\'c5\'a7\'69\'b1\'4e\'ad\'6e\'b3\'42\'b2\'7a\'aa\'ba\'b9\'4c\'b5\'7b\'bc\'67\'a6\'62\'b8\'cc\'ad\'b1\'a1\'41\'ae\'e6\'a6\'a1\'a6\'70\'a4\'55\'a1\'47
+\f0 \
+<pre>\
+-(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI\
+\{\
+\
+//
+\f1 \'b3\'42\'b2\'7a\'b9\'4c\'b5\'7b
+\f0 \
+\
+\}\
+</pre>\
+advertisementData
+\f1 \'b7\'7c\'b3\'f8\'a7\'69\'a5\'69\'a5\'48\'b3\'73\'bd\'75\'aa\'ba\'b6\'67\'c3\'e4\'a4\'ba\'ae\'65\'a1\'41\'b9\'b3\'b3\'6f\'bc\'cb\'a1\'47
+\f0 \
+<pre>\
+adverisement:\{\
+    kCBAdvDataLocalName = "INFOS 4090v35.05";\
+    kCBAdvDataServiceUUIDs =     (\
+        "Unknown (<fff0>)"\
+    );\
+    kCBAdvDataTxPowerLevel = 0;\
+\}\
+</pre>\
+\
+RSSI
+\f1 \'ac\'4f\'b0\'54\'b8\'b9\'aa\'ba\'b1\'6a\'ab\'d7\'a1\'41\'ac\'4f\'a5\'48
+\f0 NSNumber Object
+\f1 \'a6\'73\'a6\'62\'a1\'41\'be\'e3\'ad\'d3\'bd\'64\'a8\'d2\'a5\'69\'a5\'48\'ac\'4f\'b3\'6f\'bc\'cb\'a4\'6c\'a1\'47
+\f0 \
+\
+<pre>\
+\
+-(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI\
+\{\
+    \
+    NSMutableString* nsmstring=[NSMutableString stringWithString:@"\\n"];\
+    [nsmstring appendString:@"Peripheral Info:"];\
+    [nsmstring appendFormat:@"NAME: %@\\n",peripheral.name];\
+    [nsmstring appendFormat:@"RSSI: %@\\n",RSSI];\
+    \
+    if (peripheral.isConnected)\{\
+        [nsmstring appendString:@"isConnected: connected"];\
+    \}else\{\
+        [nsmstring appendString:@"isConnected: disconnected"];\
+    \}\
+    NSLog(@"adverisement:%@",advertisementData);\
+    [nsmstring appendFormat:@"adverisement:%@",advertisementData];\
+    [nsmstring appendString:@"didDiscoverPeripheral\\n"];\
+    NSLog(@"%@",nsmstring);\
+\
+\}\
+\
+</pre>\
+
+\f1 \'b5\'b2\'aa\'47\'bf\'e9\'a5\'58\'a1\'47
+\f0 \
+<pre>\
+2013-02-25 14:43:17.243 gw-health-01[141:907] \
+Peripheral Info:NAME: INFOS 4090v35.05\
+RSSI: -69\
+isConnected: disconnected\
+adverisement:\{\
+    kCBAdvDataServiceUUIDs =     (\
+        "Unknown (<fff0>)"\
+    );\
+\}\
+</pre>\
+
+\f1 \'b5\'6f\'b2\'7b\'a5\'69\'b3\'73\'bd\'75\'aa\'ba
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'b4\'4e\'b7\'7c\'a4\'a3\'c2\'5f\'aa\'ba\'b0\'f5\'a6\'e6
+\f0 ''didDiscoverPeripheral'' 
+\f1 \'b3\'6f\'ad\'d3
+\f0 Delegate
+\f1 \'a1\'41\'a9\'d2\'a5\'48\'ad\'6e\'a7\'51\'a5\'ce\'b3\'6f\'ad\'d3\'aa\'ac\'aa\'70\'b1\'4e\'a8\'43\'a6\'b8\'b5\'6f\'b2\'7b
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'a6\'73\'a4\'4a
+\f0 Array
+\f1 \'a1\'41\'a6\'41\'b4\'a3\'a8\'d1\'b5\'b9
+\f0 USER
+\f1 \'bf\'ef\'be\'dc\'a1\'41\'a9\'ce\'ac\'4f\'b1\'71\'a4\'a4\'a5\'69\'a5\'48\'a5\'68\'a7\'50\'c2\'5f\'ac\'59\'ad\'d3\'af\'53\'a7\'4f\'aa\'ba\'b6\'67\'c3\'e4\'ac\'4f\'a7\'5f\'a6\'73\'a6\'62\'a6\'d3\'a8\'4d\'a9\'77\'ad\'6e\'a4\'a3\'ad\'6e\'b3\'73\'bd\'75\'a1\'43
+\f0 \
+\
+=====stopScan=====\
+
+\f1 \'b0\'f5\'a6\'e6
+\f0 ''scanForPeripheralsWithServices'' 
+\f1 \'b1\'bd\'b4\'79\'a9\'50\'c3\'e4\'ae\'c9\'b3\'5d\'a9\'77\'a4\'40\'ad\'d3
+\f0 2
+\f1 \'ac\'ed\'aa\'ba
+\f0 Timer
+\f1 \'a1\'41\'b7\'ed\'ae\'c9\'b6\'a1\'a8\'ec\'ae\'c9\'b4\'4e\'b0\'b1\'a4\'ee
+\f0 scan
+\f1 \'a1\'41\'a4\'40\'af\'eb\'a8\'d3\'bb\'a1
+\f0 2
+\f1 \'ac\'ed\'a4\'ba\'b5\'4c\'a4\'cf\'c0\'b3\'b4\'4e\'a5\'69\'a5\'48\'b7\'ed\'a7\'40\'ac\'4f\'a8\'53\'a6\'b3\'a8\'e4\'a5\'4c\'b6\'67\'c3\'e4\'a6\'5e\'c0\'b3\'a1\'41\'a9\'d3\'a4\'57\'ad\'b1
+\f0 [[%E7%A1%AC%E9%AB%94%E9%80%B1%E9%82%8ATips#scanForPeripheralsWithServices|scanForPeripheralsWithServices]]
+\f1 \'a1\'41
+\f0 \
+
+\f1 \'b1\'4e
+\f0 stopScan
+\f1 \'bc\'67\'a6\'62
+\f0 scanTimeout
+\f1 \'b8\'cc\'ad\'b1\'a1\'47
+\f0 \
+\
+<pre>\
+- (void) scanTimeout:(NSTimer*)timer\
+\{\
+    if (CM!=NULL)\{\
+        	[CM stopScan];\
+    \}else\{\
+        NSLog(@"CM is Null!");\
+    \}\
+    NSLog(@"scanTimeout");\
+\}\
+\
+</pre>\
+\
+=====connectPeripheral=====\
+
+\f1 \'a7\'51\'a5\'ce
+\f0 [[%E7%A1%AC%E9%AB%94%E9%80%B1%E9%82%8ATips#didDiscoverPeripheral|didDiscoverPeripheral]]
+\f1 \'a9\'d2\'b1\'6f\'a8\'ec\'aa\'ba
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'a6\'43\'aa\'ed\'c5\'fd
+\f0 User
+\f1 \'bf\'ef\'be\'dc\'ad\'6e\'b3\'73\'bd\'75\'aa\'ba
+\f0 BLE
+\f1 \'a1\'41\'a6\'41\'b1\'4e
+\f0 \
+CBPeripheral
+\f1 \'b6\'c7\'a4\'4a
+\f0 connectPeripheral
+\f1 \'b6\'69\'a6\'e6\'b3\'73\'bd\'75\'a1\'41\'ae\'e6\'a6\'a1\'a1\'47
+\f0 \
+<pre>\
+\
+       [CBCentralManager connectPeripheral:CBPeripheral* options:NSDictionary*]\
+\
+</pre>\
+\
+
+\f1 \'a6\'62\'a6\'b9\'b1\'4e\'a5\'a6\'a5\'5d\'b8\'cb\'a6\'a8\'a4\'40\'ad\'d3
+\f0 connect Method
+\f1 \'a1\'41
+\f0 \
+\
+<pre>\
+- (void) connect:(CBPeripheral*)peripheral\
+\{\
+    \
+	if (![peripheral isConnected]) \{\
+		[CM connectPeripheral:peripheral options:nil];\
+        connectedPeripheral=peripheral;\
+	\}\
+\
+\}\
+\
+</pre>\
+\
+option
+\f1 \'b6\'c7\'a4\'4a
+\f0 nil
+\f1 \'a1\'41
+\f0 connectPeripheral
+\f1 \'b6\'c7\'a4\'4a
+\f0 Method connect
+\f1 \'aa\'ba\'ad\'c8\'a1\'43
+\f0 \
+\
+=====didConnectPeripheral=====\
+
+\f1 \'b0\'f5\'a6\'e6
+\f0 connectPeripheral
+\f1 \'a4\'a7\'ab\'e1\'a8\'c3\'b3\'73\'bd\'75\'a6\'a8\'a5\'5c\'ab\'e1\'b4\'4e\'b7\'7c\'a4\'de\'b5\'6f
+\f0 ''didConnectPeripheral''
+\f1 \'aa\'ba
+\f0 Delegate
+\f1 \'a1\'47
+\f0 \
+\
+<pre>\
+-(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral\
+\{\
+:\
+:\
+:\
+       \
+\}\
+</pre>\
+\
+
+\f1 \'a6\'62\'b3\'6f\'b8\'cc\'a6\'b3\'ad\'d3\'ad\'ab\'c2\'49\'a1\'41\'b7\'ed\'b3\'73\'bd\'75\'a6\'a8\'a5\'5c\'ab\'e1\'a4\'de\'b5\'6f
+\f0 Delegate
+\f1 \'ae\'c9\'a1\'41\'b4\'4e\'a5\'b2\'bb\'dd\'ad\'6e\'b0\'77\'b9\'ef\'a8\'e4
+\f0 ''CBPeripheral''
+\f1 \'a8\'d3\'b0\'a8\'a4\'57\'b6\'69\'a6\'e6
+\f0 ''discoverServices''
+\f1 \'aa\'ba\'b0\'ca\'a7\'40\'a1\'41\'a5\'68\'a4\'46\'b8\'d1\'b6\'67\'c3\'e4\'b4\'a3\'a8\'d1\'a4\'b0\'bb\'f2\'bc\'cb\'aa\'ba
+\f0 Services\
+\
+<pre>\
+\
+-(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral\
+\{\
+    NSLog(@"Connect To Peripheral with name: %@\\nwith UUID:%@\\n",peripheral.name,CFUUIDCreateString(NULL, peripheral.UUID));\
+    peripheral.delegate=self;\
+    [peripheral discoverServices:nil];//
+\f1 \'a4\'40\'a9\'77\'ad\'6e\'b0\'f5\'a6\'e6
+\f0 "discoverService"
+\f1 \'a5\'5c\'af\'e0\'a5\'68\'b4\'4d\'a7\'e4\'a5\'69\'a5\'ce\'aa\'ba
+\f0 Service\
+    \
+\}\
+\
+</pre>\
+
+\f1 \'b0\'f5\'a6\'e6
+\f0 discoverServices
+\f1 \'a4\'a7\'ab\'e1\'a4\'53\'b7\'7c\'a4\'de\'b5\'6f\'a5\'74\'a4\'40\'ad\'d3
+\f0 Delegate
+\f1 \'a5\'73\'a1\'75
+\f0 didDiscoverServices
+\f1 \'a1\'76\'a1\'41\'b1\'b5\'a4\'55\'a8\'d3\'ab\'68\'b7\'7c\'a6\'62
+\f0 [[%E7%A1%AC%E9%AB%94%E9%80%B1%E9%82%8ATips#Explore|Explore]]
+\f1 \'a4\'a4\'a4\'b6\'b2\'d0\'a1\'43
+\f0 \
+\
+====Explore====\
+[[File:BLE FLOW2.png]]\
+\
+[[%E7%A1%AC%E9%AB%94%E9%80%B1%E9%82%8ATips#Discover.2FConnect|Discover/Connect]] 
+\f1 \'a4\'a4\'a8\'cf\'a5\'ce
+\f0 CBCentralManager
+\f1 \'b6\'69\'a6\'e6\'b3\'73\'bd\'75
+\f0 /
+\f1 \'b7\'6a\'b4\'4d
+\f0 BLE
+\f1 \'a9\'50\'c3\'e4\'aa\'ba\'a5\'5c\'af\'e0\'a1\'41\'b3\'73\'bd\'75\'a4\'a7\'ab\'e1\'bb\'dd\'ad\'6e\'be\'61\'aa\'ba\'ac\'4f
+\f0 CBPeripherall
+\f1 \'a8\'d3\'b6\'c7\'b0\'65
+\f0 /
+\f1 \'b1\'b5\'a6\'ac\'b8\'ea\'ae\'c6\'a1\'43
+\f0 \
+\
+=====CBPeripheral=====\
+
+\f1 \'a8\'cf\'a5\'ce
+\f0 CBPeripheral
+\f1 \'a8\'cf\'bb\'dd\'ad\'6e\'b3\'5d\'a9\'77
+\f0 Delegate
+\f1 \'a4\'7e\'a5\'69\'a5\'48\'b6\'69\'a6\'e6\'b3\'73\'bd\'75\'aa\'ba\'b0\'ca\'a7\'40\'a1\'41\'a5\'5b\'a4\'57\'a4\'a7\'ab\'65\'a5\'5b\'a4\'4a\'aa\'ba
+\f0 CBCentralManagerDelegate
+\f1 \'a1\'41
+\f0 CODE
+\f1 \'b4\'4e\'c5\'dc\'a6\'a8\'a1\'47
+\f0 \
+\
+<pre>\
+\
+@interface DYCoreBluetooth : NSObject<CBCentralManagerDelegate, CBPeripheralDelegate> \{\
+\
+:\
+:\
+:\
+    \
+\}\
+\
+</pre>\
+\
+
+\f1 \'a4\'a7\'ab\'e1\'b3\'73\'bd\'75\'aa\'ba\'ad\'ab\'c2\'49\'a5\'fe\'b3\'a3\'ac\'4f\'a6\'62
+\f0 Delegate
+\f1 \'aa\'ba\'a4\'ac\'b0\'ca\'a1\'41\'ac\'64\'ac\'dd
+\f0 Service Type
+\f1 \'a9\'ce\'ac\'4f\'a6\'b3\'a4\'b0\'bb\'f2\'bc\'cb\'aa\'ba
+\f0 Services
+\f1 \'a5\'69\'a5\'48\'b4\'a3\'a8\'d1\'a1\'43
+\f0 \
+\
+=====didConnectPeripheral=====\
+
+\f1 \'ab\'65\'ad\'b1\'a6\'b3\'b5\'79\'ac\'b0\'a4\'b6\'b2\'d0
+\f0 [[%E7%A1%AC%E9%AB%94%E9%80%B1%E9%82%8ATips#didConnectPeripheral|didConnectPeripheral]]
+\f1 \'a1\'41\'b3\'6f\'ac\'4f\'a6\'62\'b3\'73\'bd\'75\'a6\'a8\'a5\'5c\'ab\'e1\'b4\'4e\'b7\'7c\'a4\'de\'b5\'6f\'aa\'ba
+\f0 Delegate
+\f1 \'a1\'41\'a6\'fd\'a4\'40\'a9\'77\'ad\'6e\'a6\'62\'b3\'6f\'b8\'cc\'b0\'f5\'a6\'e6\'a4\'40\'a8\'c7
+\f0 Method
+\f1 \'a4\'7e\'a5\'69\'a5\'48\'b6\'b6\'a7\'51\'aa\'ba\'a4\'de\'b5\'6f\'a5\'74\'a4\'40\'ad\'d3
+\f0 CBPeripheral
+\f1 \'aa\'ba
+\f0 Delegate
+\f1 \'a5\'68\'ac\'64\'ac\'dd\'a6\'b3\'a4\'b0\'bb\'f2\'bc\'cb\'aa\'ba
+\f0 Services\
+\
+<pre>\
+\
+-(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral\
+\{\
+    NSLog(@"Connect To Peripheral with name: %@\\nwith UUID:%@\\n",peripheral.name,CFUUIDCreateString(NULL, peripheral.UUID));\
+    \
+    peripheral.delegate=self;\
+    [peripheral discoverServices:nil];//
+\f1 \'a4\'40\'a9\'77\'ad\'6e\'b0\'f5\'a6\'e6
+\f0 "discoverService"
+\f1 \'a5\'5c\'af\'e0\'a5\'68\'b4\'4d\'a7\'e4\'a5\'69\'a5\'ce\'aa\'ba
+\f0 Service    \
+    \
+\}\
+\
+</pre>\
+\
+
+\f1 \'a8\'d2\'a4\'6c\'a4\'a4\'a4\'77\'b8\'67\'b1\'4e\'a1\'75
+\f0  peripheral.delegate=self
+\f1 \'a1\'76\'a1\'41\'a9\'d2\'a5\'48\'b1\'b5\'a4\'55\'a8\'d3\'b6\'69\'a6\'e6
+\f0  peripheral
+\f1 \'aa\'ba\'a5\'f4\'a6\'f3\'b0\'ca\'b0\'b5\'a4\'de\'b5\'6f\'aa\'ba
+\f0 Delegate
+\f1 \'b3\'a3\'a6\'62\'b3\'6f\'ad\'d3
+\f0 Object
+\f1 \'a4\'a4\'a1\'41\'b0\'f5\'a6\'e6\'a1\'75
+\f0 discoverServices] Method
+\f1 \'a1\'41\'c5\'fd\'a5\'a6\'a5\'68\'b4\'4d\'a7\'e4
+\f0 Services
+\f1 \'a1\'41\'a4\'40\'a7\'e4\'a8\'ec
+\f0 Services
+\f1 \'b4\'4e\'a4\'53\'b7\'7c\'a4\'de\'b5\'6f\'a1\'75
+\f0 didDiscoverServices
+\f1 \'a1\'76
+\f0 Delegate
+\f1 \'a1\'41\'b3\'6f\'bc\'cb\'a7\'da\'ad\'cc\'b4\'4e\'a5\'69\'a5\'48\'a4\'46\'b8\'d1\'a6\'b3\'a4\'b0\'bb\'f2
+\f0 Services
+\f1 \'a1\'43
+\f0 \
+\
+=====didDiscoverServices=====\
+
+\f1 \'b1\'71\'b3\'6f\'b8\'cc\'b6\'7d\'a9\'6c\'b4\'4e\'ac\'4f\'b3\'cc\'c3\'f6\'c1\'e4
+\f0 \
+\
+<pre>\
+\
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error \{\
+    NSLog(@"didDiscoverServices:\\n");    \
+    if( peripheral.UUID == NULL  ) return; // zach ios6 added    \
+    if (!error) \{\
+        NSLog(@"====%@\\n",peripheral.name);\
+        NSLog(@"=========== %d of service for UUID %@ ===========\\n",peripheral.services.count,CFUUIDCreateString(NULL,peripheral.UUID));\
+\
+        for (CBService *p in peripheral.services)\{\
+            NSLog(@"Service found with UUID: %@\\n", p.UUID);\
+            [peripheral discoverCharacteristics:nil forService:p];\
+        \}\
+        \
+    \}\
+    else \{\
+        NSLog(@"Service discovery was unsuccessfull !\\n");\
+    \}\
+    \
+\}\
+\
+</pre>\
+\
+''peripheral.services.count'' 
+\f1 \'b7\'7c\'aa\'be\'b9\'44\'a6\'b3\'a6\'68\'a4\'d6\'ad\'d3
+\f0 Services
+\f1 \'a1\'41\'a6\'62\'a8\'43\'ad\'d3
+\f0 Servces
+\f1 \'a4\'a4\'c1\'d9\'b7\'7c\'a6\'b3
+\f0 Characteristics
+\f1 \'bb\'dd\'ad\'6e\'a4\'46\'b8\'d1\'a1\'41\'a9\'d2\'a5\'48\'b7\'7c\'b0\'77\'b9\'ef\'a8\'43\'ad\'d3
+\f0 Service
+\f1 \'a8\'d3\'b0\'f5\'a6\'e6
+\f0 '' peripheral discoverCharacteristics: forService:''
+\f1 \'a5\'68\'a4\'46\'b8\'d1\'a8\'43\'ad\'d3
+\f0 Service
+\f1 \'a4\'55\'a6\'b3\'a6\'68\'a4\'d6\'ad\'d3
+\f0 Characteristics
+\f1 \'b4\'a3\'a8\'d1\'b6\'c7\'b0\'65
+\f0 /
+\f1 \'b1\'b5\'a6\'ac\'aa\'ba\'b7\'be\'b3\'71\'a1\'41\'a6\'62\'b0\'f5\'a6\'e6
+\f0 ''discoverCharacteristics''
+\f1 \'ae\'c9\'a4\'5d\'a4\'de\'b5\'6f\'a4\'46
+\f0 ''didDiscoverCharacteristicsForService'' Delegate
+\f1 \'a1\'41\'b3\'cc\'ab\'e1\'a6\'41\'a5\'d1
+\f0 ''didDiscoverCharacteristicsForService''
+\f1 \'af\'75\'a5\'bf\'aa\'ba\'a7\'50\'c2\'5f\'a4\'b0\'bb\'f2\'bc\'cb\'aa\'ba
+\f0 Service
+\f1 \'a4\'b0\'bb\'f2\'bc\'cb\'aa\'ba
+\f0 Characteristics
+\f1 \'a6\'41\'b6\'69\'a6\'e6\'b3\'42\'b2\'7a\'a4\'a7\'ab\'e1\'a6\'ac\'a8\'ec\'aa\'ba\'b8\'ea\'ae\'c6\'a1\'41\'a8\'d2\'a6\'70\'a1\'47
+\f0 \
+
+\f1 \'b5\'6f\'b2\'7b
+\f0 '''2A37'''
+\f1 \'aa\'ba
+\f0 Characteristic
+\f1 \'a1\'41\'b4\'4e\'ad\'6e\'b6\'69\'a6\'e6\'b5\'f9\'a5\'55\'b3\'71\'aa\'be\'a1\'41\'a8\'ec\'ae\'c9\'ad\'d4
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'b5\'6f\'b0\'54\'ae\'a7\'b9\'4c\'a8\'d3\'a4\'7e\'b7\'7c\'a6\'62\'a6\'ac\'a8\'ec\'b7\'ed\'a4\'55\'b1\'6f\'a8\'ec\'b8\'ea\'ae\'c6\'a1\'43
+\f0 \
+\
+=====didDiscoverCharacteristicsForService=====\
+
+\f1 \'be\'e3\'ad\'d3\'b3\'cc\'c3\'f6\'c1\'e4\'aa\'ba\'a6\'61\'a4\'e8\'b4\'4e\'ac\'4f\'b3\'6f\'ad\'d3
+\f0 Delegate
+\f1 \'a1\'41\'b5\'7b\'a6\'a1\'ac\'5b\'ba\'63\'a6\'70\'a4\'55\'a1\'47
+\f0 \
+\
+<pre>\
+\
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error\
+\{\
+    \
+:\
+:\
+:  \
+    \
+\}\
+\
+</pre>\
+\
+====Interact====\
+[[File:BLE FLOW3.png]]\
+\
+
+\f1 \'b3\'cc\'ab\'e1\'a7\'b9\'a6\'a8
+\f0 ''didDiscoverCharacteristicsForService''
+\f1 \'a4\'a7\'ab\'e1\'a1\'41\'be\'e3\'ad\'d3\'b3\'73\'bd\'75\'b9\'4c\'b5\'7b\'b4\'4e\'ba\'e2\'ac\'4f\'a7\'b9\'a6\'a8\'a1\'41\'a4\'a7\'ab\'e1\'aa\'ba
+\f0 ''didUpdateValueForCharacteristic''
+\f1 \'ac\'4f\'be\'e3\'ad\'d3\'b8\'ea\'ae\'c6\'b1\'b5\'a6\'ac\'aa\'ba\'a5\'44\'ad\'6e
+\f0 Delegate
+\f1 \'a1\'41\'b8\'67\'b9\'4c\'b1\'b5\'a6\'ac\'a8\'ec\'aa\'ba\'b8\'ea\'ae\'c6\'a4\'de\'b5\'6f
+\f0 Delegate
+\f1 \'b6\'69\'a6\'e6\'a7\'59\'ae\'c9\'b3\'42\'b2\'7a\'b4\'4e\'a5\'69\'a5\'48\'a8\'fa\'b1\'6f
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'aa\'ba\'b0\'54\'ae\'a7\'a1\'41\'a6\'41\'a8\'cf\'a5\'ce
+\f0 ''writeValue''
+\f1 \'aa\'ba
+\f0 Method
+\f1 \'bc\'67\'a4\'4a\'b8\'ea\'ae\'c6\'a8\'ec
+\f0 BLE
+\f1 \'b6\'67\'c3\'e4\'a1\'41\'be\'e3\'ad\'d3
+\f0 BLE
+\f1 \'aa\'ba\'b3\'cc\'b0\'f2\'a5\'bb\'a8\'cf\'a5\'ce\'a4\'e8\'a6\'a1\'b4\'4e\'a4\'6a\'ad\'50\'a4\'57\'a7\'b9\'a6\'a8\'a1\'43
+\f0 \
+\
+===== didDiscoverCharacteristicsForService=====\
+\
+
+\f1 \'a5\'d1
+\f0 Apple
+\f1 \'b4\'a3\'a8\'d1\'aa\'ba\'b8\'ea\'ae\'c6\'c2\'5e\'a8\'fa\'ac\'59\'b3\'a1\'a4\'c0\'a8\'d3\'a4\'46\'b8\'d1\'ac\'5b\'ba\'63\'a1\'41\'b5\'a5\'a4\'55\'b5\'7b\'a6\'a1\'b4\'4e\'ac\'4f\'a7\'51\'a5\'ce\'b3\'6f\'ac\'5b\'ba\'63\'a5\'68\'a4\'40\'a4\'40\'b4\'4d\'b3\'58\'a9\'d2\'a6\'b3\'aa\'ba
+\f0 ''CharacteristicsForService''\
+\
+[[File:DidDiscoverCharacteristicsForServiceFrame.png]]\
+\
+
+\f1 \'a8\'43\'bc\'cb
+\f0 Servic
+\f1 \'a4\'55\'b3\'a3\'b7\'7c\'a6\'b3\'ab\'dc\'a6\'68\'aa\'ba
+\f0 Characteristics
+\f1 \'a1\'41
+\f0 Characteristics
+\f1 \'ac\'4f\'b4\'a3\'a8\'d1\'b8\'ea\'ae\'c6\'b6\'c7\'bb\'bc\'aa\'ba\'ad\'ab\'c2\'49\'a1\'41\'a5\'a6\'b7\'7c\'a6\'b3\'ad\'d3
+\f0 UUID
+\f1 \'bd\'73\'b8\'b9\'a1\'41\'a6\'41\'a5\'d1\'b3\'6f
+\f0  
+\f1 \'ad\'d3\'bd\'73\'b8\'b9\'a5\'68
+\f0 [http://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx Bluetooth] 
+\f1 \'a9\'78\'a4\'e8\'ac\'64\'aa\'ed\'b1\'6f\'a8\'ec\'ac\'4f\'ad\'fe\'ba\'d8\'b8\'ea\'ae\'c6\'ae\'e6\'a6\'a1\'a1\'41\'a6\'41\'b1\'4e\'b8\'ea\'ae\'c6\'b8\'d1\'b6\'7d\'a5\'5b\'a5\'48\'a8\'cf\'a5\'ce\'a1\'43
+\f0 \
+\
+
+\f1 \'af\'75\'a5\'bf\'aa\'ba\'a8\'d2\'a4\'6c\'a1\'47
+\f0 \
+\
+<pre>\
+\
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error\
+\{\
+    \
+    CBService *s = [peripheral.services objectAtIndex:(peripheral.services.count - 1)];\
+    NSLog(@"=========== Service UUID %s ===========\\n",[self CBUUIDToString:service.UUID]);\
+    if (!error) \{\
+        NSLog(@"=========== %d Characteristics of service ",service.characteristics.count);\
+        \
+        for(CBCharacteristic *c in service.characteristics)\{\
+            \
+            NSLog(@" %s \\n",[ self CBUUIDToString:c.UUID]);\
+          //  CBService *s = [peripheral.services objectAtIndex:(peripheral.services.count - 1)];\
+            if(service.UUID == NULL || s.UUID == NULL) return; // zach ios6 added\
+            \
+                         \
+            //Register notification\
+            if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180D"]])\
+                \
+            \{\
+                if ([c.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]])\
+                \{\
+                    [self notification:service.UUID characteristicUUID:c.UUID peripheral:peripheral on:YES];\
+                    NSLog(@"registered notification 2A37");\
+                \}\
+                if ([c.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]])\
+                \{\
+                    [self notification:service.UUID characteristicUUID:c.UUID peripheral:peripheral on:YES];\
+                    NSLog(@"registered notification 2A38");\
+                \}\
+                if ([c.UUID isEqual:[CBUUID UUIDWithString:@"2A39"]])\
+                \{\
+                    [self notification:service.UUID characteristicUUID:c.UUID peripheral:peripheral on:YES];\
+                    NSLog(@"registered notification 2A39");\
+                \}\
+                \
+            \}\
+            \
+        \}\
+        NSLog(@"=== Finished set notification ===\\n");\
+\
+\
+    \}\
+    else \{\
+        NSLog(@"Characteristic discorvery unsuccessfull !\\n");\
+\
+    \}\
+    if([self compareCBUUID:service.UUID UUID2:s.UUID]) \{//
+\f1 \'a7\'51\'a5\'ce\'a6\'b9\'a8\'d3\'bd\'54\'a9\'77\'be\'e3\'ad\'d3\'ac\'79\'b5\'7b\'b3\'a3\'b5\'b2\'a7\'f4\'ab\'e1\'a4\'7e\'af\'e0\'b3\'5d\'a9\'77\'b3\'71\'aa\'be
+\f0 \
+        [delegate didConnected:peripheral error:error];\
+        NSLog(@"=== Finished discovering characteristics ===\\n");\
+        //
+\f1 \'a5\'fe\'b3\'a1\'aa\'41\'b0\'c8\'b3\'a3\'c5\'aa\'a8\'fa\'a7\'b9\'b2\'a6\'ae\'c9\'a4\'7e\'af\'e0\'a8\'cf\'a5\'ce\'a1\'49
+\f0 \
+        \
+    \}\
+\
+\}\
+\
+</pre>\
+
+\f1 \'a8\'d2\'a4\'6c\'ac\'4f\'a5\'48
+\f0 [http://developer.bluetooth.org/gatt/services/Pages/ServiceViewer.aspx?u=org.bluetooth.service.heart_rate.xml Heart Rate(180D)]\
+\
+[[File:HeartRateAssignedNumber.png]]\
+\
+Heart Rate
+\f1 \'a8\'d3\'bb\'a1\'a1\'41
+\f0 [http://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml 0x2A37]
+\f1 \'a5\'69\'a5\'48\'b1\'6f\'a8\'ec\'a4\'df\'b8\'f5\'aa\'ba\'bc\'c6\'be\'da\'a1\'41\'a9\'d2\'a5\'48\'b0\'77\'b9\'ef\'a6\'b9\'b6\'b5\'a5\'69\'a5\'48\'b5\'f9\'a5\'55\'b3\'71\'aa\'be\'a8\'d3\'b1\'6f\'a8\'ec\'a8\'43\'a6\'b8\'aa\'ba\'a4\'df\'b8\'f5\'bc\'c6\'be\'da\'a7\'f3\'b7\'73\'a1\'43
+\f0 \
+\
+''notification''
+\f1 \'ac\'4f\'a7\'da\'a6\'db\'a6\'e6\'bc\'b6\'bc\'67\'aa\'ba
+\f0 Method
+\f1 \'a1\'41\'a5\'69\'a5\'48\'b1\'71
+\f0 Service UUID
+\f1 \'a4\'ce
+\f0 Characteristic UUID
+\f1 \'a8\'d3\'a7\'e4\'a8\'ec
+\f0 Service
+\f1 \'bb\'50
+\f0 Characteristic
+\f1 \'aa\'ba
+\f0 Object Point
+\f1 \'a1\'41\'a4\'7e\'a5\'69\'a5\'48\'b2\'c5\'a6\'58\'b5\'f9\'a5\'55\'b3\'71\'aa\'be\'aa\'ba\'ae\'e6\'a6\'a1
+\f0 \
+\
+<pre>\
+    [(CBPeripheral *)p setNotifyValue:(BOOL) forCharacteristic:CBCharacteristic *)]\
+</pre>\
+\
+
+\f1 \'b1\'4e
+\f0 Characteristic
+\f1 \'aa\'ba
+\f0 Point
+\f1 \'b6\'c7\'a4\'4a\'a8\'c3\'b3\'5d\'a9\'77
+\f0 ''setNotifyValue:on''
+\f1 \'b4\'4e\'a7\'b9\'a6\'a8\'b5\'f9\'a5\'55\'b3\'71\'aa\'be\'a1\'41\'a4\'a7\'ab\'e1\'a6\'70\'aa\'47\'a6\'b3\'a7\'f3\'b7\'73\'b8\'ea\'ae\'c6\'ae\'c9\'b4\'4e\'b7\'7c\'a4\'de\'b5\'6f
+\f0 ''didUpdateValueForCharacteristic'' Delegate
+\f1 \'a1\'41\'a6\'41\'b6\'69\'a6\'e6\'b8\'ea\'ae\'c6\'b3\'42\'b2\'7a\'a1\'43
+\f0 \
+\
+*notification\
+\
+notification
+\f1 \'a5\'69\'a5\'48\'aa\'bd\'b1\'b5
+\f0 copy
+\f1 \'a4\'55\'b5\'7b\'a6\'a1\'bd\'58\'ad\'ab\'c2\'d0\'a8\'cf\'a5\'ce\'ac\'db\'b7\'ed\'a4\'e8\'ab\'4b\'a1\'43
+\f0 \
+\
+<pre>\
+\
+-(void) notification:(CBUUID *) serviceUUID characteristicUUID:(CBUUID *)characteristicUUID peripheral:(CBPeripheral *)p on:(BOOL)on \{\
+    \
+    CBService *service = [self getServiceFromUUID:serviceUUID p:p];\
+    if (!service) \{\
+        if (p.UUID == NULL) return; // zach ios6 addedche\
+        NSLog(@"Could not find service with UUID on peripheral with UUID \\n");\
+        return;\
+    \}\
+    CBCharacteristic *characteristic = [self getCharacteristicFromUUID:characteristicUUID service:service];\
+    if (!characteristic) \{\
+        if (p.UUID == NULL) return; // zach ios6 added\
+        NSLog(@"Could not find characteristic with UUID  on service with UUID  on peripheral with UUID\\n");\
+        return;\
+    \}\
+    [p setNotifyValue:on forCharacteristic:characteristic];\
+\
+\}\
+\
+\
+-(CBService *) getServiceFromUUID:(CBUUID *)UUID p:(CBPeripheral *)p \{\
+    \
+    for (CBService* s in p.services)\{\
+        if ([self compareCBUUID:s.UUID UUID2:UUID]) return s;\
+    \}\
+    return nil; //Service not found on this peripheral\
+\}\
+\
+-(CBCharacteristic *) getCharacteristicFromUUID:(CBUUID *)UUID service:(CBService*)service \{\
+    \
+    for (CBCharacteristic* c in service.characteristics)\{\
+        if ([self compareCBUUID:c.UUID UUID2:UUID]) return c;\
+    \}\
+    return nil; //Characteristic not found on this service\
+\}\
+</pre>\
+\
+\
+=====didUpdateValueForCharacteristic=====\
+\
+''didUpdateValueForCharacteristic''
+\f1 \'a6\'62\'b3\'73\'bd\'75\'a7\'b9\'a6\'a8\'ab\'e1\'c5\'e3\'aa\'ba\'ab\'44\'b1\'60\'ad\'ab\'ad\'6e\'a1\'41\'bd\'64\'a8\'d2\'a4\'a4\'a6\'b3\'a4\'f1\'b9\'ef
+\f0 2
+\f1 \'ad\'d3
+\f0 UUID
+\f1 \'ac\'b0
+\f0 [http://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.body_sensor_location.xml 2A37]
+\f1 \'bb\'50
+\f0 [http://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml 2A38]\
+\
+<pre>\
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error\
+\{\
+\
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]])\
+    \{\
+        if( (characteristic.value)  || !error )\
+        \{\
+\
+        \}\
+    \}\
+    \
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A38"]])\
+    \{\
+        //set refresh int\
+        uint8_t val = 1;\
+        NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];\
+        [peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];\
+    \}\
+    \
+\}\
+\
+</pre>\
+\
+
+\f1 \'b0\'77\'b9\'ef\'b3\'6f\'a8\'e2\'ad\'d3
+\f0 UUID
+\f1 \'a6\'a8\'a5\'df\'ae\'c9\'b0\'b5\'b9\'ef\'c0\'b3\'aa\'ba\'a4\'75\'a7\'40\'a1\'41\'b3\'6f\'b8\'cc\'a5\'48
+\f0 2A38
+\f1 \'a8\'d3\'b8\'d1\'bb\'a1\'a4\'40\'a4\'55\'a1\'43
+\f0 \
+\
+*2A38\
+
+\f1 \'b1\'71\'b5\'7b\'a6\'a1\'a4\'a4\'aa\'ba
+\f0 2A38
+\f1 \'a8\'d3\'bb\'a1\'a1\'41\'b7\'ed\'a7\'f3\'b7\'73\'b8\'ea\'ae\'c6\'ac\'b0
+\f0 2A38
+\f1 \'ae\'c9\'a1\'41\'b5\'7b\'a6\'a1\'b1\'4e\'aa\'bd\'b1\'b5\'bc\'67\'a4\'4a
+\f0  ''1'' 
+\f1 \'a1\'41\'a4\'5d\'b4\'4e\'ac\'4f\'a6\'62\'a4\'55\'aa\'ed\'a4\'a4\'a5\'69\'a5\'48\'a4\'46\'b8\'d1\'a8\'ec\'a1\'41
+\f0 ''1''
+\f1 \'a9\'d2\'a5\'4e\'aa\'ed\'aa\'ba\'b4\'4e\'ac\'4f
+\f0 ''Chest''\
+\
+[[File:HeartRate 2A38.png]] \
+\
+
+\f1 \'b7\'4e\'ab\'e4\'ac\'4f\'a7\'69\'b6\'44\'a4\'df\'b8\'f5\'b7\'50\'b4\'fa\'be\'b9\'b6\'71\'b4\'fa\'aa\'ba\'a6\'ec\'b8\'6d\'ac\'4f\'a6\'62\'af\'dd\'b3\'a1\'aa\'ba\'b3\'a1\'a4\'c0\'a1\'43
+\f0 \
+\
+\
+*
+\f1 \'aa\'60\'b7\'4e\'a8\'c6\'b6\'b5
+\f0 \
+
+\f1 \'be\'e3\'ad\'d3
+\f0 ''didUpdateValueForCharacteristic''
+\f1 \'a6\'62\'b3\'42\'b2\'7a\'ae\'c9\'bd\'d0\'aa\'60\'b7\'4e\'b8\'ea\'ae\'c6\'ae\'e6\'a6\'a1\'aa\'ba\'b8\'d1\'c4\'c0\'a1\'41\'a9\'b9\'a9\'b9\'ac\'4f\'a6\'5d\'ac\'b0\'ae\'e6\'a6\'a1\'b8\'d1\'c4\'c0\'bf\'f9\'bb\'7e\'a4\'7e\'b7\'7c\'b1\'6f\'a8\'ec\'a4\'a3\'a5\'bf\'bd\'54\'aa\'ba\'b8\'ea\'ae\'c6\'a1\'43
+\f0 \
+\
+====ReConnect====\
+\
+==
+\f1 \'ac\'db\'be\'f7
+\f0 ==\
+==GPS==\
+==
+\f1 \'b9\'71\'a6\'c0
+\f0 ==\
+==
+\f1 \'ae\'cc\'b0\'ca
+\f0 ==\
+==
+\f1 \'b6\'5a\'c2\'f7
+\f0 ==\
+}
